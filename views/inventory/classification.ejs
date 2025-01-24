@@ -1,0 +1,13 @@
+<!-- Heading-- implement title element to describe the content of the view -->
+<% if (title) { %> <!-- EJS code block for a JS 'if' structure to determine if a 'title' variable exists-->
+    <h1><%= title %></h1> <!-- displayed the variable (if exists) within an <h1> element. 
+        If the variable doesn't exist the 'else' statement is executed to redirect the response object to the default index route -->
+    <% } else { 
+      res.redirect('/')
+    } %>
+
+<!-- Message-- display a message if an error occurs -->
+<%# messages() %>
+
+<!-- Inventory Items Display-- main content delivery mechanism for the view -->
+<%- grid %> <!-- EJS code block with an 'unescaped (-) indicator to allow HTML to be displayed'-->
