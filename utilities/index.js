@@ -24,7 +24,6 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
-
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
@@ -56,6 +55,40 @@ Util.buildClassificationGrid = async function(data){
     grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
   return grid
+}
+/* ********************************************
+* Build the HTML view for the single car
+* ********************************************* */
+Util.buildItemListing = async function(data){
+  let itemlisting 
+  if(data) {
+    itemlisting = `
+    <section class="vehicle-listing">
+      <img src="${data.inv.image}" alt="${data.inv_make} ${data.inv.model}"></img>
+      <div class="car-details">
+          <h2>${data.inv_year} ${DatabaseError.inv_make} ${data.inv_model}</h2>
+          ${Number.parseFloat(data.inv_price).toLocaleString("eng-US", {style: "currency", currency: "USD"})}
+      </div>
+      <div class="description">
+        <p>
+          ${data.inv_description}
+        </p>
+        <dl>
+              <dt>MILEAGE</dt>
+              <dd>${data.inv_miles.toLocaleString("en-US", {
+                style: "decimal",
+              })}</dd>
+              <dt>COLOR</dt>
+              <dd>${data.inv_color}</dd>
+              <dt>CLASS</dt>
+              <dd>${data.classification_name}</dd>
+            </dl>
+      </div>
+    </section>`
+  } else {
+    itemlisting = '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+  }
+  return itemlisting
 }
 
 /* ****************************************

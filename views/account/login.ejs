@@ -1,0 +1,11 @@
+<h1><%- title %></h1>
+<%- messages() %>
+
+<form class="login" action="/account/login" method="post">
+    <label for="email">Email<input type="email" name="account_email" required></label>
+    <label>Password<input type="password" name="account_password" required pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{12,}$"></label>
+    <input type="submit" value="LOGIN">
+</form>
+<div>
+    <span>No account? <a href="/account/registration">Sign up</a></span>
+</div>
