@@ -64,25 +64,27 @@ Util.buildItemListing = async function(data){
   if(data) {
     itemlisting = `
     <section class="vehicle-listing">
-      <img src="${data.inv.image}" alt="${data.inv_make} ${data.inv.model}"></img>
-      <div class="car-details">
-          <h2>${data.inv_year} ${DatabaseError.inv_make} ${data.inv_model}</h2>
-          ${Number.parseFloat(data.inv_price).toLocaleString("eng-US", {style: "currency", currency: "USD"})}
-      </div>
-      <div class="description">
-        <p>
-          ${data.inv_description}
-        </p>
-        <dl>
-              <dt>MILEAGE</dt>
+      <img src="${data.inv_image}" alt="${data.inv_make} ${data.inv_model}"></img>
+      <div id="vehicle-details">
+        <div class="car-model">
+          <h2>${data.inv_year} ${data.inv_make} ${data.inv_model}</h2>
+          <p>${Number.parseFloat(data.inv_price).toLocaleString("eng-US", {style: "currency", currency: "USD"})}</>
+        </div>
+        <div class="description">
+          <p>
+            ${data.inv_description}
+          </p>
+            <dl>
+              <dt><mark><u>MILEAGE</u></mark></dt>
               <dd>${data.inv_miles.toLocaleString("en-US", {
                 style: "decimal",
               })}</dd>
-              <dt>COLOR</dt>
+              <dt><mark><u>COLOR</u></mark></dt>
               <dd>${data.inv_color}</dd>
-              <dt>CLASS</dt>
+              <dt><mark><u>CLASS</u></mark></dt>
               <dd>${data.classification_name}</dd>
             </dl>
+        </div>
       </div>
     </section>`
   } else {

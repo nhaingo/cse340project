@@ -29,18 +29,18 @@ main {
 @media only screen and (min-width: 768px) {
 
   body {
-    /*background-position: 0 0, 0 0, -50px -50px, 50px 50px;*/
+    background-position: 0 0, 0 0, -50px -50px, 50px 50px;
     background-image: url('../images/site/small_check.jpg');
   }
   #wrapper {
     border-radius: 10px;
-    margin-top: 1rem;
+    /*margin-top: 1rem;*/
     border: 5px solid var(--secondary-color);
     padding: 1vw;
-    width: 75vw;
     max-width: 920px;
     background-color: var(--primary-color);
   }
+
   /*Header*/
   .siteName a {
     font-family: var(--body-font);
@@ -65,8 +65,6 @@ main {
     list-style: none;
     background-color: rgb(40, 39, 39);
     width: 100%;
-    
-    
   }
 
   nav[aria-label="Main navigation"] a{
@@ -86,6 +84,7 @@ main {
     margin: 0;
 
   }
+  /* HOME PAGE */
   /* Hero */
 .hero {
   padding: 1rem;
@@ -120,7 +119,7 @@ main {
   font-size:1.2rem;
   line-height: 0.2;
 }
-#hero-text h3{
+#hero-text h2{
   color:var(--secondary-color);
   font-size: 2rem;
 }
@@ -191,7 +190,110 @@ main {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 }
+/* Classification view  */
+.namePrice {
+  background-color: var(--secondary-color);
 }
+ul#inv-display > li {
+  width: 100%;
+  max-width: 350px;
+  background-color: lightcyan;
+  color: black;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.173);
+}
+.namePrice a{
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: black;
+}
+.namePrice a:hover {
+  background-color: lightcyan;
+  font-size: 1.6rem;
+}
+#inv-display {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#inv-display li {
+  display: inline-block;
+  width: 220px;
+  margin: 20px;
+  text-align: center;
+}
+.namePrice {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding-bottom: 10px;
+}
+.namePrice hr {
+  margin: 5px 0;
+  border: 2px solid black;
+}
+
+/* Single view */
+.vehicle-listing{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.car-model p{
+  font-size: 1.2rem;
+}
+.car-model {
+  background-color: lightgrey;
+  margin-left: 15pt;
+}
+dt{
+  font-weight: bold;
+  
+}
+.description{
+  text-align: left;
+  padding-left: 20px;
+}
+/* Register form*/
+#register-form {
+  background-color: var(--secondary-color); /* Light blue background for the form */
+  border-radius: 8px; /* Rounded corners */
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+}
+
+/*error page*/
+
+.error-view p{
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: var(--body-font);
+}
+/* error page styling*/
+.error-view h1{
+  font-family: var(--header-font);
+  font-size: 3rem;
+}
+.notice {
+  color: red;
+}
+dt{
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding-bottom: 7px;
+  padding-top: 7px;
+}
+dd{
+  font-size: 1rem;
+}
+mark{
+  background-color: lightgrey;
+}
+
 @media only screen and (max-width: 768px) {
   body {
     background-image: none;
@@ -204,6 +306,7 @@ main {
     width: 75vw;
     max-width: none;
   }
+  /* HOME PAGE */
   /*Header*/
   .siteName a {
     font-family: var(--body-font);
@@ -217,7 +320,7 @@ main {
     font-family: var(--body-font);
     text-decoration: none;
     color: rgb(40, 39, 39);
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     padding-right: 20pt;
   }
 /*Navigation Menu*/
@@ -230,7 +333,7 @@ nav[aria-label="Main navigation"] {
 nav[aria-label="Main navigation"] a{
   color: aliceblue;
   text-decoration: none;
-  font-size: .8rem;
+  font-size: .6rem;
   font-weight: bold;
 }
 nav ul {
@@ -267,21 +370,20 @@ nav ul {
     left: 40%;
     transform: translate(-50%, -50%);
     padding: 20px;
-    background-color: whitesmoke;
     background: rgba(0, 0, 0, 0.1);
 }
 #hero-text p{
   font-family: var(--body-font);
   color:var(--secondary-color);
-  font-size:1rem;
-  line-height: 0.2;
+  font-size:0.5rem;
+  line-height: 0.4;
 }
-#hero-text h3{
+#hero-text h2{
   color:var(--secondary-color);
   font-size: 1rem;
 }
 .image-button {
-  width: 70%;
+  width: 100%;
   height: auto;
 
 }
@@ -341,8 +443,64 @@ nav ul {
   font-size: .8rem;
   line-height: 1.5;
 }
+/* Classification view  */
+.namePrice {
+  background-color: var(--secondary-color);
+}
+ul#inv-display > li {
+  width: 100%;
+  max-width: 350px;
+  background-color: lightcyan;
+  color: black;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.173);
+}
+.namePrice a{
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: black;
+}
+.namePrice a:hover {
+  background-color: lightcyan;
+  font-size: 1.6rem;
+}
+
+#inv-display {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#inv-display li {
+  display: inline-block;
+  width: 220px;
+  margin: 20px;
+  text-align: center;
+}
+.namePrice {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding-bottom: 10px;
+}
+.namePrice hr {
+  margin: 5px 0;
+  border: 2px solid black;
+}
+/* Single view */
+.vehicle-listing{
+  display: grid;
+  grid-template-columns: 1fr;
 
 }
+.car-model {
+  background-color: lightgrey;
+}
+.vehicle-listing img{
+  width: 100%;
+  height: auto;
+}
+
 
 /* Footer*/
 footer {
@@ -354,12 +512,102 @@ footer {
   margin-top: 10px;
 }
 
-ul#inv-display {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 0;
-  margin: 0;
+#messages {
+  padding-bottom: 15pt;
+}
+
+/* form*/
+
+/*error page styling*/
+
+.error-view p{
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: var(--body-font);
+}
+
+.error-view h1{
+  font-family: var(--header-font);
+  font-size: 2rem;
+}
+}
+/* Register form*/
+/* Form container styling */
+#register-form {
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* Fieldset styling */
+fieldset {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;;
+}
+
+legend {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  padding: 0 10px;
+  background-color: #f0f8ff; 
+}
+
+/* Input styling */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+input:required:invalid, input:focus:invalid {
+  background-image: url(/images/invalid.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+ }
+  input:required:valid {
+  background-image: url(/images/valid.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+  }
+  input:focus {
+    background-color: lightgray;
+  }
+
+/* Button styling */
+#account-btn{
+  width: 100%;
+  padding: 12px;
+  background-color: darkslategrey;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Button hover effect */
+#account-btn:hover {
+  background-color: #45a049;
+}
+/* Password notification*/
+.fineprint{
+  color:#3a3939;
+  margin-top: 0;
+  font-size: 0.9rem;
+  font-family: var(--body-font);
+}
+
+/* Link to access sign-up page*/
+#signup-link, #signup-link a{
+  font-size: 18px;
 }

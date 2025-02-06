@@ -1,11 +1,19 @@
 <h1><%- title %></h1>
 <%- messages() %>
 
-<form class="login" action="/account/login" method="post">
-    <label for="email">Email<input type="email" name="account_email" required></label>
-    <label>Password<input type="password" name="account_password" required pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{12,}$"></label>
-    <input type="submit" value="LOGIN">
-</form>
-<div>
-    <span>No account? <a href="/account/registration">Sign up</a></span>
-</div>
+<section id="register-form">
+    <form class="account" action="/account/login" method="post">
+        <fieldset>
+            <legend>Already have an account with us?</legend> 
+            <label for="email">Email<input type="email" name="account_email" required></label>
+            <label>Password<input type="password" name="account_password" required pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{12,}$"></label>
+
+            <button id="account-btn" type="submit">LOGIN</button>
+        </fieldset>
+    </form>
+    <div>
+        <span id="signup-link">No account? <a href="/account/register">Sign up</a></span>
+    </div>
+</section>
+
+<script src="/js/script.js"></script>

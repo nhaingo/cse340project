@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [{
         "name": "Launch CSE Motors",
-        "program": "${workspaceFolder}/server.js",
+        "program": "${workspaceFolder}/routes/inventoryRoute.js",
         "request": "launch",
         "skipFiles": [
             "<node_internals>/**"

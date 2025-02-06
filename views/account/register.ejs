@@ -1,0 +1,32 @@
+<h1><%- title %></h1>
+<%- messages() %>
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+<section id="register-form">
+    <form id="registerForm"action="/account/register" method="post">
+        <p>All fields are required.</p>
+        <fieldset>
+            <legend>Create an Account</legend> 
+            <label for="firstname">First Name</label>
+            <input type="text" id="firstname" name="account_firstname" required placeholder="e.g., John">
+
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="account_lastname" required placeholder="e.g., Doe">
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="account_email" required placeholder="enter a valid email address" >
+
+            <label for="accountPassword">Password:</label> 
+            <input type="password" name="account_password" id="accountPassword" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+            <p class="fineprint">Password must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</p> 
+
+            <button id="account-btn" type="submit">Register</button>
+        </fieldset>
+        
+    </form>
+</section>
