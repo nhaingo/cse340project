@@ -4,7 +4,7 @@
     <ul class="notice">
    <% errors.array().forEach(error => { %>
      <li><%= error.msg %></li>
-  <%  }) %>
+    <%  }) %>
    </ul>
   <% } %>
 <section id="register-form">
@@ -13,13 +13,13 @@
         <fieldset>
             <legend>Create an Account</legend> 
             <label for="firstname">First Name</label>
-            <input type="text" id="firstname" name="account_firstname" required placeholder="e.g., John">
+            <input type="text" id="accountFirstname" name="account_firstname" required value="<%= locals.account_firstname %>" placeholder="e.g., John">
 
             <label for="lastname">Last Name</label>
-            <input type="text" id="lastname" name="account_lastname" required placeholder="e.g., Doe">
+            <input type="text" id="accountLastname" name="account_lastname" required value="<%= locals.account_lastname %>" placeholder="e.g., Doe">
 
             <label for="email">Email Address</label>
-            <input type="email" id="email" name="account_email" required placeholder="enter a valid email address" >
+            <input type="email" id="email" name="account_email" required value="<%= locals.account_email %>" placeholder="Enter a valid email address" >
 
             <label for="accountPassword">Password:</label> 
             <input type="password" name="account_password" id="accountPassword" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">

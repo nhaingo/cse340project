@@ -2,11 +2,13 @@
 <%- messages() %>
 
 <section id="register-form">
-    <form class="account" action="/account/login" method="post">
+    <form id="loginForm" action="/account/login" method="post">
         <fieldset>
             <legend>Already have an account with us?</legend> 
-            <label for="email">Email<input type="email" name="account_email" required></label>
-            <label>Password<input type="password" name="account_password" required pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{12,}$"></label>
+            <label for="email">Email</label>
+            <input type="email" name="account_email" required></input>
+            <label>Password</label>
+            <input type="password" name="account_password" required pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{12,}$"></input>
 
             <button id="account-btn" type="submit">LOGIN</button>
         </fieldset>
