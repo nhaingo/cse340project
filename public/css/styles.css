@@ -623,11 +623,10 @@ input:required:invalid, input:focus:invalid {
   font-family: var(--body-font);
 }
 #class-name{
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: var(--body-font);
   margin-bottom: 20px;
   margin-top: 15px;
-  font-weight: bold;
 }
 
 #register-form h2{
