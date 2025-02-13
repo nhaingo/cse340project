@@ -1,0 +1,20 @@
+<h1><%- title %></h1>
+<%- messages() %> 
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+<section id="register-form">
+    <h2>FIELD IS REQUIRED</h2>
+    <fieldset>
+        <form class="add-new-inventory" action="inv/add-classification" method="post">
+            <label>Classification Name</label>
+            <p class="fineprint">NAME MUST BE ALPHABETIC CHARACTERS ONLY AND CANNOT CONTAIN SPACE</p>
+            <input type="text" name="classification_name" value="<%= locals.classification_name %>" pattern="[0-9a-zA-Z]+" required>
+            <button id="account-btn" type="submit">Add Classification</button>
+        </form>
+    </fieldset>
+</section>

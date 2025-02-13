@@ -10,24 +10,20 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin));
 
 // Deliver the registration view
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
-
-// Process registration
-router.post('/register', utilities.handleErrors(accountController.registerAccount))
-
 // Process the registration data
 router.post(
-    "/register",
-    regValidate.registrationRules(),
-    regValidate.checkRegData,
-    utilities.handleErrors(accountController.registerAccount)
-  )
+  "/register",
+  regValidate.registrationRules(),
+  regValidate.checkRegData,
+  utilities.handleErrors(accountController.registerAccount)
+)
 
 // Process the login attempt
 router.post(
   "/login",
-  (req, res) => {
-    res.status(200).send('login process')
-  }
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.accountLogin)
 )
 
 module.exports = router;
