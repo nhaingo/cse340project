@@ -27,10 +27,10 @@
     <input type="number" id="year" placeholder="2001" name="inv_year" min="1900" max="2030" value="<%- locals.inv_year %>" required>
 
     <!-- Description Fix -->
-    <label for="description">Description</label>
-    <textarea id="description" placeholder="You can get it in any color you want." 
-        name="inv_description" minlength="2" maxlength="150" rows="5" value="<%- locals.inv_description %>" required></textarea>
-    
+    <label for="description">Description
+      <textarea id="description" placeholder="You can get it in any color you want." 
+      name="inv_description" minlength="2" maxlength="150" rows="5" required><%- locals.inv_description %></textarea>
+    </label>
     <br><br>
 
     <!-- Image Path Fix -->
