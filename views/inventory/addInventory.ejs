@@ -11,36 +11,50 @@
   <section id="register-form">
     <h2>ALL FIELDS ARE REQUIRED</h2>
         <form class="add-new-inventory" action="/inv/add-inventory" method="post">
-            <label for="classification-select">Classification</label>
+            <label for="classificationList">Classification</label>
             <%- classifications %> <br><br>
 
-            <label for="make">Make</label>
-            <input type="text" placeholder="Ford" name="inv_make" minlength="3" value="<%- locals.inv_make %>" required >
 
-            <label for="model">Model</label>
-            <input type="text" placeholder="Mustang" name="inv_model" minlength="3" value="<%- locals.inv_model %>" required>
-
-            <label for="year">Year:</label>
-            <input type="number" placeholder="2001" name="inv_year" min="1900" max="2030" value="<%- locals.inv_year %>" required>
-
-            <p><label for="description">Description</label></p>
-            <textarea placeholder="You can get it in any color you want." name="inv_description" minlength="2" maxlength="150" rows="5" value="<%- locals.inv_description %>" required></textarea><br><br>
-            
-            <label for="image-path">Image Path</label>
-            <input type="text" placeholder="/images/vehicles/no-image.png" name="inv_image" accept="image/vehicles/*" required>
-
-            <label for="thumbnail-path">Thumbnail Path</label>
-            <input type="text" placeholder="/images/vehicles/no-image-tn.png" name="inv_thumbnail" value="images/vehicles/no-image-tn.png" required>
-
-            <label for="price">Price</label>
-            <input type="number" placeholder="15000" name="inv_price" value="<%- locals.inv_price %>" required>
-
-            <label for="miles">Miles</label>
-            <input type="number" placeholder="100,000" name="inv_miles" value="<%- locals.inv_miles %>" required>
-
-            <label for="color">Color</label>
-            <input type="text" placeholder="Red" name="inv_color" value="<%- locals.inv_color %>" required>
+    <label for="make">Make</label>
+    <input type="text" id="make" placeholder="Ford" name="inv_make" minlength="3" value="<%- locals.inv_make %>" required>
     
-            <button id="account-btn" type="submit">Add Vehicle</button>
+    <!-- Model Fix -->
+    <label for="model">Model</label>
+    <input type="text" id="model" placeholder="Mustang" name="inv_model" minlength="3" value="<%- locals.inv_model %>" required>
+
+    <!-- Year Fix -->
+    <label for="year">Year</label>
+    <input type="number" id="year" placeholder="2001" name="inv_year" min="1900" max="2030" value="<%- locals.inv_year %>" required>
+
+    <!-- Description Fix -->
+    <label for="description">Description</label>
+    <textarea id="description" placeholder="You can get it in any color you want." 
+        name="inv_description" minlength="2" maxlength="150" rows="5" value="<%- locals.inv_description %>" required></textarea>
+    
+    <br><br>
+
+    <!-- Image Path Fix -->
+    <label for="image-path">Image Path</label>
+    <input type="text" id="image-path" placeholder="/images/vehicles/no-image.png" name="inv_image" required>
+
+    <!-- Thumbnail Path Fix -->
+    <label for="thumbnail-path">Thumbnail Path</label>
+    <input type="text" id="thumbnail-path" placeholder="/images/vehicles/no-image-tn.png" 
+        name="inv_thumbnail" value="images/vehicles/no-image-tn.png" required>
+
+    <!-- Price Fix -->
+    <label for="price">Price</label>
+    <input type="number" id="price" placeholder="15000" name="inv_price" value="<%- locals.inv_price %>" required>
+
+    <!-- Miles Fix -->
+    <label for="miles">Miles</label>
+    <input type="number" id="miles" placeholder="100,000" name="inv_miles" value="<%- locals.inv_miles %>" required>
+
+    <!-- Color Fix -->
+    <label for="color">Color</label>
+    <input type="text" id="color" placeholder="Red" name="inv_color" value="<%- locals.inv_color %>" required>
+
+    <button id="account-btn" type="submit">Add Vehicle</button>
+
         </form>
 </section> 
