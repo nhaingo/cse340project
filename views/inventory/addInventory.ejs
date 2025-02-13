@@ -10,39 +10,37 @@
 
   <section id="register-form">
     <h2>ALL FIELDS ARE REQUIRED</h2>
-    <fieldset>
         <form class="add-new-inventory" action="/inv/add-inventory" method="post">
-            <label>Classification</label>
+            <label for="classification-select">Classification</label>
             <%- classifications %> <br><br>
 
-            <label>Make</label>
+            <label for="make">Make</label>
             <input type="text" placeholder="Ford" name="inv_make" minlength="3" value="<%- locals.inv_make %>" required >
 
-            <label>Model</label>
+            <label for="model">Model</label>
             <input type="text" placeholder="Mustang" name="inv_model" minlength="3" value="<%- locals.inv_model %>" required>
 
-            <label>Year:</label>
+            <label for="year">Year:</label>
             <input type="number" placeholder="2001" name="inv_year" min="1900" max="2030" value="<%- locals.inv_year %>" required>
 
-            <label>Description</label>
+            <p><label for="description">Description</label></p>
             <textarea placeholder="You can get it in any color you want." name="inv_description" minlength="2" maxlength="150" rows="5" value="<%- locals.inv_description %>" required></textarea><br><br>
             
-            <label>Image Path</label>
+            <label for="image-path">Image Path</label>
             <input type="text" placeholder="/images/vehicles/no-image.png" name="inv_image" accept="image/vehicles/*" required>
 
-            <label>Thumbnail Path</label>
+            <label for="thumbnail-path">Thumbnail Path</label>
             <input type="text" placeholder="/images/vehicles/no-image-tn.png" name="inv_thumbnail" value="images/vehicles/no-image-tn.png" required>
 
-            <label>Price</label>
+            <label for="price">Price</label>
             <input type="number" placeholder="15000" name="inv_price" value="<%- locals.inv_price %>" required>
 
-            <label>Miles</label>
+            <label for="miles">Miles</label>
             <input type="number" placeholder="100,000" name="inv_miles" value="<%- locals.inv_miles %>" required>
 
-            <label>Color</label>
+            <label for="color">Color</label>
             <input type="text" placeholder="Red" name="inv_color" value="<%- locals.inv_color %>" required>
     
             <button id="account-btn" type="submit">Add Vehicle</button>
         </form>
-    </fieldset>
 </section> 

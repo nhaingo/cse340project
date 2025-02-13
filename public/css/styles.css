@@ -611,3 +611,25 @@ input:required:invalid, input:focus:invalid {
 #signup-link, #signup-link a{
   font-size: 18px;
 }
+/* form add-inventory*/
+.add-new-inventory {
+  border: 2px solid whitesmoke;
+  border-radius: 8px;
+  padding: 10px;
+}
+.fineprint-add-classification{
+  margin-top: 0;
+  font-size: 0.9rem;
+  font-family: var(--body-font);
+}
+#class-name{
+  font-size: 1.5rem;
+  font-family: var(--header-font);
+  margin-bottom: 20px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+#register-form h2{
+  font-family: Arial, Helvetica, sans-serif;
+}
