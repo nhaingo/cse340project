@@ -624,7 +624,7 @@ input:required:invalid, input:focus:invalid {
 }
 #class-name{
   font-size: 1.5rem;
-  font-family: var(--header-font);
+  font-family: var(--body-font);
   margin-bottom: 20px;
   margin-top: 15px;
   font-weight: bold;
