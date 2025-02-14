@@ -8,7 +8,6 @@ const validate = {};
  * ********************************* */
 validate.classificationRules = () => {
   return [
-    // firstname is required and must be string
     body("classification_name")
       .trim()
       .escape()

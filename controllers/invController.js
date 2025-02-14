@@ -77,9 +77,9 @@ invCont.addClassification = async function (req, res, next) {
     )
     res.render("inventory/management", {
       title: "Vehicle Management",
-      errors: null,
       nav,
       classification_name,
+      errors: null,
     })
   } else {
     req.flash("notice", `Failed to add ${classification_name}`)
