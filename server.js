@@ -53,7 +53,9 @@ app.use(function(req, res, next){
   next()
 })
 
+//Login activity
 app.use(cookieParser())
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * Routes
