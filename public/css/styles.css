@@ -632,3 +632,38 @@ input:required:invalid, input:focus:invalid {
 #register-form h2{
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.add-new-inventory li a {
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 20px;
+}
+
+.add-new-inventory li{
+  list-style-type: none;
+}
+
+/* Select Inventory*/
+.manage-inventory h2{
+  font-family: Arial, Helvetica, sans-serif;;
+}
+.manage-inventory p{
+  font-size: 1.2rem;
+  font-family: var(--body-font);
+}
+.manage-inventory #classificationList{
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.manage-inventory #inventoryDisplay thead{
+  font-size: 1.2rem;
+  color: midnightblue;
+}
+
+.manage-inventory #inventoryDisplay tbody{
+  font-size: 1rem;
+  font-family: var(--body-font);
+  line-height: 1.8;
+}
+

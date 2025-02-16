@@ -1,0 +1,64 @@
+<h1><%- title %></h1>
+<%- messages() %> 
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+  <section id="register-form">
+    <h2>ALL FIELDS ARE REQUIRED</h2>
+        <form class="add-new-inventory" action="/inv/update/" method="post">
+            <label for="classificationList">Classification</label>
+            <%- classifications %> <br><br>
+
+
+    <label for="make">Make</label>
+    <input type="text" id="make" placeholder="Ford" name="inv_make" minlength="3" value="<%- locals.inv_make %>" required>
+    
+    
+    <label for="model">Model</label>
+    <input type="text" id="model" placeholder="Mustang" name="inv_model" minlength="3" value="<%- locals.inv_model %>" required>
+
+    
+    <label for="year">Year</label>
+    <input type="number" id="year" placeholder="2001" name="inv_year" min="1900" max="2030" value="<%- locals.inv_year %>" required>
+
+    
+    <label for="description">Description
+      <textarea id="description" placeholder="You can get it in any color you want." 
+      name="inv_description" minlength="2" maxlength="150" rows="5" required><%- locals.inv_description %></textarea>
+    </label>
+    <br><br>
+
+    <!-- Image Path Fix -->
+    <label for="image-path">Image Path</label>
+    <input type="text" id="image-path" placeholder="/images/vehicles/no-image.png" name="inv_image" required>
+
+    <!-- Thumbnail Path Fix -->
+    <label for="thumbnail-path">Thumbnail Path</label>
+    <input type="text" id="thumbnail-path" placeholder="/images/vehicles/no-image-tn.png" 
+        name="inv_thumbnail" value="images/vehicles/no-image-tn.png" required>
+
+    <!-- Price Fix -->
+    <label for="price">Price</label>
+    <input type="number" id="price" placeholder="15000" name="inv_price" value="<%- locals.inv_price %>" required>
+
+    <!-- Miles Fix -->
+    <label for="miles">Miles</label>
+    <input type="number" id="miles" placeholder="100,000" name="inv_miles" value="<%- locals.inv_miles %>" required>
+
+    <!-- Color Fix -->
+    <label for="color">Color</label>
+    <input type="text" id="color" placeholder="Red" name="inv_color" value="<%- locals.inv_color %>" required>
+
+    <button id="account-btn" type="submit">Update Vehicle</button>
+    <input type="hidden" name="inv_id"
+    <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+    <% } %>>
+
+    </form>
+</section>
+

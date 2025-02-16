@@ -53,12 +53,14 @@ async function registerAccount(req, res) {
     res.status(201).render("account/login", {
       title: "Login",
       nav,
+      errors: null,
     })
   } else {
     req.flash("notice", "Sorry, the registration failed.")
     res.status(501).render("account/register", {
       title: "Registration",
       nav,
+      errors: null,
     })
   }
 }
@@ -101,7 +103,7 @@ async function accountLogin(req, res) {
       } else {
         res.cookie("jwt", accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
       }
-      return res.redirect("/account/")
+      return res.redirect("/account/account-management")
     }
     else {
       req.flash("message notice", "Please check your credentials and try again.")
@@ -117,5 +119,18 @@ async function accountLogin(req, res) {
   }
 }
 
+/* ****************************************
+ *  Deliver login view
+ * *************************************** */
+async function buildAccountManagement(req, res) {
+  let nav = await utilities.getNav()
 
-  module.exports = { buildRegister, registerAccount, buildLogin, accountLogin }
+  res.render("account/account-management", {
+    title: "Account Management",
+    nav,
+    errors: null,
+  })
+}
+
+
+  module.exports = { buildRegister, registerAccount, buildLogin, accountLogin, buildAccountManagement }
