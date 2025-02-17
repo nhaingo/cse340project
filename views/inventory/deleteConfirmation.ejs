@@ -1,0 +1,35 @@
+<h1><%- title %></h1>
+<%- messages() %> 
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+
+<section id="register-form">
+    <p style="font-size:1.5rem;font-weight:bold;">Confirm Deletion - The deletion is <span style="color:red;font-size:1.5rem;font-weight:bold;">PERMANENT</span> </p>
+        <form class="add-new-inventory" action="/inv/delete" method="post">
+
+
+            <label for="make">Make</label>
+            <input type="text" readonly id="make" placeholder="Ford" name="inv_make" minlength="3" value="<%- locals.inv_make %>" >
+    
+            <label for="model">Model</label>
+            <input type="text" readonly id="model" placeholder="Mustang" name="inv_model" minlength="3" value="<%- locals.inv_model %>" >
+
+            <label for="year">Year</label>
+            <input type="number" readonly id="year" placeholder="2001" name="inv_year" min="1900" max="2030" value="<%- locals.inv_year %>" >
+
+            <label for="price">Price</label>
+            <input type="number" readonly id="price" placeholder="15000" name="inv_price" value="<%- locals.inv_price %>" >
+
+            <button id="account-btn" type="submit">Delete Vehicle</button>
+            <input type="hidden" name="inv_id"
+            <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+            <% } %>>
+
+        </form>
+</section>
