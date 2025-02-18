@@ -27,8 +27,8 @@ router.post("/add-inventory", invValidate.inventoryRules(), invValidate.checkInv
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
 // Build edit/update inventory views
-router.get("/edit/:inventoryId", utilities.handleErrors(invController.buildEditInventory));
-router.post("/update/", invValidate.inventoryRules(), invValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
+router.get("/edit/:inventoryId", utilities.handleErrors(invController.buildEditInventory))
+router.post("/update/", invValidate.inventoryRules(), invValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory))
 
 // Deliver the delete confirmation view
 router.get("/delete/:inventoryId", utilities.handleErrors(invController.deleteView))

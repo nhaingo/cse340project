@@ -120,7 +120,7 @@ async function accountLogin(req, res) {
 }
 
 /* ****************************************
- *  Deliver login view
+ *  Deliver management view
  * *************************************** */
 async function buildAccountManagement(req, res) {
   let nav = await utilities.getNav()
@@ -132,5 +132,138 @@ async function buildAccountManagement(req, res) {
   })
 }
 
+/* ****************************************
+ *  Process logout request
+ * ************************************ */
+async function accountLogout(req, res) {
+  res.clearCookie("jwt")
+  delete res.locals.accountData;
+  res.locals.loggedin = 0;
+  req.flash("notice", "Logout successful.")
+  res.redirect("/")
+  return
+}
 
-  module.exports = { buildRegister, registerAccount, buildLogin, accountLogin, buildAccountManagement }
+/* *****************************************
+  * Deliver update view
+  * ****************************************** */
+
+async function buildAccountUpdate(req, res, next) {
+  let nav = await utilities.getNav()
+
+  const accountDetails = await accountModel.getAccountByAccountId(req.params.accountId);
+  const {account_id, account_firstname, account_lastname, account_email} = accountDetails
+  if (!accountDetails) {
+    req.flash("notice", "Account not found.");
+    return res.redirect("/account/account-management"); // Redirect instead of crashing
+  } else {
+  res.render("account/update", {
+    title: "Update",
+    nav,
+    errors: null,
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email
+  })
+}
+}
+
+/* ******************************
+ *  Process account update request
+ * ******************************* */
+async function updateAccount(req, res) {
+  let nav = await utilities.getNav()
+  const {
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email,
+  } = req.body
+
+  const updateResult = await accountModel.updateAccount(
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email,
+  )
+
+  if (updateResult) {
+    req.flash(
+      "notice",
+      `Congratulations, ${account_firstname}. Your account is updated`
+    )
+
+    //Update the cookie accountData
+    const accountData = await accountModel.getAccountByAccountId(account_id)
+    delete accountData.account_password
+    res.locals.accountData.account_firstname = accountData.account_firstname
+    utilities.updateCookie(accountData, res)
+
+    res.status(201).render("account/account-management", {
+      title: "Management",
+      errors: null,
+      nav,
+    })
+  } else {
+    req.flash("notice", "Sorry, the update failed.");
+    res.status(501).render("account/update", {
+      title: "Update",
+      errors: null,
+      account_id,
+      account_firstname,
+      account_lastname,
+      account_email,
+      nav,
+    })
+  }
+}
+
+/* **********************************
+ *  Process password update request
+ * ******************************** */
+async function updatePassword(req, res) {
+  let nav = await utilities.getNav()
+
+  const { account_id, account_password } = req.body;
+
+  // Hash the password before storing.
+  let hashedPassword;
+  try {
+    // regular password and cost (salt is generated automatically)
+    hashedPassword = await bcrypt.hashSync(account_password, 10);
+  } catch (error) {
+    req.flash(
+      "notice",
+      "Sorry, there was an error processing the password update."
+    )
+    res.status(500).render("account/update", {
+      title: "Update",
+      nav,
+      errors: null,
+    })
+  }
+
+  const updateResult = await accountModel.updatePassword(account_id, hashedPassword);
+
+  if (updateResult) {
+    req.flash(
+      "notice",
+      `Congratulations, your password is updated.`
+    );
+    res.status(201).render("account/account-management", {
+      title: "Manage",
+      errors: null,
+      nav,
+    })
+  } else {
+    req.flash("notice", "Sorry, attempt to update password failed.");
+    res.status(501).render("account/update", {
+      title: "Update",
+      errors: null,
+      nav,
+    })
+  }
+}
+
+  module.exports = { buildRegister, registerAccount, buildLogin, accountLogin, buildAccountManagement, accountLogout, buildAccountUpdate, updateAccount, updatePassword }

@@ -24,8 +24,16 @@ router.post("/login",
   regValidate.loginRules(),
   regValidate.checkLoginData,
   utilities.handleErrors(accountController.accountLogin)
-);
+)
 
+//Route to build Account Logout View
+router.get("/logout", utilities.handleErrors(accountController.accountLogout));
+
+
+//Deliver the update account view
+router.get("/update/:accountId", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountUpdate))
+router.post("/update", regValidate.updateRules(), regValidate.checkUpdateData, utilities.handleErrors(accountController.updateAccount))
+router.post("/update-password", regValidate.updatePasswordRules(), regValidate.checkUpdatePasswordData, utilities.handleErrors(accountController.updatePassword))
 
 
 
