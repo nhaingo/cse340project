@@ -266,4 +266,54 @@ async function updatePassword(req, res) {
   }
 }
 
-  module.exports = { buildRegister, registerAccount, buildLogin, accountLogin, buildAccountManagement, accountLogout, buildAccountUpdate, updateAccount, updatePassword }
+/* Build delete account view*/
+async function deleteView (req, res, next) {
+    const account_id = parseInt(req.params.accountId);
+    let nav = await utilities.getNav()
+  
+    const accountData = (
+      await accountModel.getAccountByAccountId(account_id))[0]; 
+    const accountName = `${accountData.account_lastname} ${accountData.account_firstname}`
+  
+    res.render("./account/delete-account", {
+      title: "Delete " + accountName,
+      errors: null,
+      nav,
+      account_id: accountData.account_id,
+      account_lastname: accountData.account_lastname,
+      account_firstname: accountData.account_firstname,
+      account_email: accountData.account_email,
+    })
+  }
+
+/* Delete Inventory Item*/
+async function deleteAccount  (req, res, next) {
+  let nav = await utilities.getNav()
+  const accountId = parseInt(req.body.account_id)
+  const {
+    account_id,
+    account_lastname,
+    account_firstname,
+    account_email,
+  } = req.body
+  
+  const deleteResult = await accountModel.deleteAccountName(accountId)
+  const accountName = `${account_lastname} ${account_firstname}` 
+  if (deleteResult) {
+    req.flash("notice", `The ${accountName} was successfully deleted.`)
+    res.redirect("/")
+  } else {
+    req.flash("notice", "Sorry, the delete failed")
+    res.status(501).render("account/delete-account", {
+      title: "Delete " + accountName,
+      nav,
+      errors: null,
+      account_id,
+      account_lastname,
+      account_firstname,
+      account_email,
+    })
+  }
+}
+
+  module.exports = { buildRegister, registerAccount, buildLogin, accountLogin, buildAccountManagement, accountLogout, buildAccountUpdate, updateAccount, updatePassword, deleteView, deleteAccount }

@@ -14,6 +14,6 @@
     <p><a href="/inv/">Manage Inventory</a></p>
   <% } else if(locals.accountData.account_type == "Client") { %>
     <h2>Welcome <%- locals.accountData.account_firstname %></h2>
-    <p><a href="/account/update/<%- locals.accountData.account_id %>">Update account information</a></p>
+    <p><a href="/account/update/<%- locals.accountData.account_id %>">Update/Delete account information</a></p>
     <% } %>
   <p>You're logged in</p>

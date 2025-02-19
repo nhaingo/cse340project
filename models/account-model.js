@@ -76,5 +76,21 @@ async function updatePassword(account_id, hashed_password) {
 
 }
 
+/* ***************************
+ *  Delete Account Data
+ * ************************** */
+async function deleteAccountName(
+  account_id,
+) {
+  try {
+    const sql =
+      "DELETE FROM public.account WHERE account_id = $1;"
+    const data = await pool.query(sql, [account_id])
+    return data
+  } catch (error) {
+    new Error("model error: " + error)
+  }
+}
 
-  module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, getAccountByAccountId, updateAccount, updatePassword}
+
+  module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, getAccountByAccountId, updateAccount, updatePassword, deleteAccountName}
