@@ -8,6 +8,7 @@
    </ul>
   <% } %>
 <!--Deliver an add new classification view and an add new inventory view-->
+<% if(locals.accountData.account_type == "Employee" || locals.accountData.account_type == "Admin") { %>
 
 <ul class="add-new-inventory">
     <li>
@@ -26,6 +27,7 @@
     <table id="inventoryDisplay"></table>
     </div>
 </div>
+<% } %>
 
 <noscript>Javascript must be enable to use this page.</noscript>
 
