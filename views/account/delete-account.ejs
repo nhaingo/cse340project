@@ -1,5 +1,5 @@
 <h1><%- title %></h1>
-<%- messages() %> 
+<%- messages() %>
 <% if (errors) { %>
     <ul class="notice">
    <% errors.array().forEach(error => { %>
@@ -9,21 +9,21 @@
   <% } %>
 
   <section id="register-form">
-    <h2 style="font-size:1.5rem;font-weight:bold;">Confirm Deletion - The deletion is <span style="color:red;font-size:1.5rem;font-weight:bold;">PERMANENT</span> </h2>
-        <form class="delete-account" action="/account/delete-account" method="post">
+    <form id="deleteForm"action="/account/delete-account" method="post">
+        <h2>Want to delete account?</h2>
+        <fieldset>
+            <legend>Remove Account</legend> 
+            <label for="firstname">First Name</label>
+            <input type="text" id="accountFirstname" name="account_firstname" required value="<%= locals.account_firstname %>">
 
+            <label for="lastname">Last Name</label>
+            <input type="text" id="accountLastname" name="account_lastname" required value="<%= locals.account_lastname %>">
 
-            <label for="accountEmail">Make</label>
-            <input type="email" readonly id="accountEmail"  name="account_email" value="<%- locals.account_email %>" >
-    
-            <label for="accountLastname">Model</label>
-            <input type="text" readonly id="model" name="account_lastname" value="<%- locals.account_lastname %>" >
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="account_email" required value="<%= locals.account_email %>" >
 
-            <label for="accountFirstname">Year</label>
-            <input type="text" readonly id="accountFirstname" value="<%- locals.account_firstname %>" >
-
-            <button id="account-btn" type="submit">Delete Account</button>
+            <button id="account-btn" type="submit">Delete</button>
             <input type="hidden" name="account_id" value="<%= locals.account_id %>">
-
-        </form>
-</section> 
+        </fieldset>
+    </form>
+</section>

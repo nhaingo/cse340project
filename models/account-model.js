@@ -79,16 +79,15 @@ async function updatePassword(account_id, hashed_password) {
 /* ***************************
  *  Delete Account Data
  * ************************** */
-async function deleteAccountName(
-  account_id,
-) {
+async function deleteAccountName(account_id) {
   try {
-    const sql =
-      "DELETE FROM public.account WHERE account_id = $1;"
-    const data = await pool.query(sql, [account_id])
-    return data
+    const sql = "DELETE FROM public.account WHERE account_id = $1 RETURNING *;";
+    const data = await pool.query(sql, [account_id]);
+    // If rows are returned, deletion was successful
+    return data.rows.length > 0;
   } catch (error) {
-    new Error("model error: " + error)
+    console.error("model error:", error);
+    throw new Error("An error occurred while deleting the account: " + error.message);
   }
 }
 

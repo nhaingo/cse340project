@@ -35,10 +35,9 @@ router.get("/update/:accountId", utilities.checkLogin, utilities.handleErrors(ac
 router.post("/update", regValidate.updateRules(), regValidate.checkUpdateData, utilities.handleErrors(accountController.updateAccount))
 router.post("/update-password", regValidate.updatePasswordRules(), regValidate.checkUpdatePasswordData, utilities.handleErrors(accountController.updatePassword))
 
-//Route to deliver account delete view
-router.get("/delete-account/:accountId", utilities.handleErrors(accountController.deleteView))
-router.post("/delete-account", utilities.handleErrors(accountController.deleteAccount))
-
+// Route to deliver and process account delete view
+router.get("/delete-account/:accountId", utilities.handleErrors(accountController.deleteView));
+router.post("/delete-account", utilities.handleErrors(accountController.deleteAccount));
 
 
 module.exports = router;
